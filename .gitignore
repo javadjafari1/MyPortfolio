@@ -54,8 +54,3 @@ desktop.ini
 
 # ─── Certificates ────────────────────────────────────────────────────────────
 *.pem
-
-# ─── Portrait (added separately — not committed to source control) ────────────
-public/portrait.jpg
-public/portrait.png
-public/portrait.webp

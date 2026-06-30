@@ -117,7 +117,7 @@ function PortraitImage() {
   return (
     <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-muted">
       <Image
-        src="/portrait.jpg"
+        src="/portrait.webp"
         alt="Javad Jafari"
         fill
         priority
