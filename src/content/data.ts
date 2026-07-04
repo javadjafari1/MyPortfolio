@@ -1,4 +1,17 @@
-import type { Experience, Project, Skill, SocialLink } from '@/types'
+import type { Experience, GalleryImage, Project, Skill, SocialLink } from '@/types'
+
+function gallery(slug: string, count: number, alt: string): GalleryImage[] {
+  return Array.from({ length: count }, (_, i) => {
+    const n = String(i + 1).padStart(2, '0')
+    return {
+      thumb: `/projects/${slug}/${n}-thumb.webp`,
+      full: `/projects/${slug}/${n}-full.webp`,
+      width: 760,
+      height: 1705,
+      alt: `${alt} — screenshot ${i + 1}`,
+    }
+  })
+}
 
 // ─── Identity ────────────────────────────────────────────────────────────────
 
@@ -83,6 +96,7 @@ export const projects: Project[] = [
     year: 2023,
     context: 'personal',
     scale: 'Live on Google Play',
+    gallery: gallery('linkaroo', 4, 'Linkaroo'),
   },
   {
     slug: 'pofox',
@@ -99,6 +113,7 @@ export const projects: Project[] = [
     year: 2024,
     context: 'personal',
     scale: 'Beta',
+    gallery: gallery('pofox', 4, 'POFox'),
   },
   {
     slug: 'qrbuddy',
@@ -133,6 +148,7 @@ export const projects: Project[] = [
     year: 2022,
     context: 'personal',
     scale: 'Open Source',
+    gallery: gallery('backgroundable', 3, 'Backgroundable'),
   },
 ]
 

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Badge } from '@/components/ui/Badge'
 import { Section } from '@/components/ui/Section'
 import { AnimateIn } from '@/components/motion/AnimateIn'
+import { ProjectGallery } from '@/components/gallery/ProjectGallery'
 import { PlayStoreIcon, ExternalLinkIcon, GitHubIcon } from '@/components/icons'
 import { projects } from '@/content/data'
 import { cn } from '@/lib/utils'
@@ -82,6 +83,9 @@ function ProjectCard({ project, delay = 0 }: { project: Project; delay?: number 
             )}
           </div>
         </div>
+
+        {/* Gallery */}
+        {project.gallery && <ProjectGallery title={project.title} images={project.gallery} />}
 
         {/* Description */}
         <p className="mb-4 flex-1 text-sm leading-relaxed text-muted-fg">{project.description}</p>

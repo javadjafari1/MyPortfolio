@@ -6,7 +6,15 @@ const NODE_COUNT = 70
 const LINK_DIST = 120 // max distance between nodes for an edge
 const CURSOR_DIST = 150 // max distance from cursor to draw an edge
 const NODE_SPEED = 0.28 // autonomous drift speed
-const ACCENT = { r: 129, g: 140, b: 248 } // indigo-400
+const FALLBACK_ACCENT = { r: 205, g: 182, b: 81 } // dark-theme --accent, used until CSS resolves
+
+function readAccentRgb() {
+  const hex = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()
+  const match = /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(hex)
+  if (!match) return FALLBACK_ACCENT
+  const [, r, g, b] = match
+  return { r: parseInt(r!, 16), g: parseInt(g!, 16), b: parseInt(b!, 16) }
+}
 
 interface Node {
   x: number
@@ -28,10 +36,6 @@ function makeNode(W: number, H: number): Node {
   }
 }
 
-function rgba(alpha: number) {
-  return `rgba(${ACCENT.r},${ACCENT.g},${ACCENT.b},${alpha})`
-}
-
 export function BackgroundCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -48,6 +52,21 @@ export function BackgroundCanvas() {
     // Safety is guaranteed by the guards above — these never escape the effect.
     const c = canvas
     const x = ctx
+
+    let accent = readAccentRgb()
+    function rgba(alpha: number) {
+      return `rgba(${accent.r},${accent.g},${accent.b},${alpha})`
+    }
+
+    // Theme toggle swaps a class on <html>, which changes --accent — re-read
+    // it so the particle color follows the active theme.
+    const themeObserver = new MutationObserver(() => {
+      accent = readAccentRgb()
+    })
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    })
 
     let W = 0,
       H = 0
@@ -181,6 +200,7 @@ export function BackgroundCanvas() {
 
     return () => {
       cancelAnimationFrame(rafId)
+      themeObserver.disconnect()
       window.removeEventListener('resize', resize)
       window.removeEventListener('mousemove', onMouseMove)
       window.removeEventListener('mouseleave', onMouseLeave)

@@ -1,0 +1,26 @@
+[
+  {
+    "title": "How Should You Name Dependencies in the Version Catalog?",
+    "url": "https://javadjafari1.medium.com/how-should-you-name-dependencies-in-the-version-catalog-a34ae52290a5",
+    "publishedAt": "2024-08-18T20:03:12.000Z",
+    "summary": "It's going to be a short article, I promise. Per Gradle's blog, you can name your dependencies using the kebab-case style naming convention. Most of the blog is amazing and I'm on board with it, you can pretty much do…",
+    "readingTimeMinutes": 2,
+    "tags": ["naming", "gradle-version-catalog", "version-catalog", "gradle"]
+  },
+  {
+    "title": "From Code to APK: R8, ProGuard in Android",
+    "url": "https://javadjafari1.medium.com/from-code-to-apk-r8-proguard-in-android-bc5aaffc894e",
+    "publishedAt": "2024-08-02T10:07:31.000Z",
+    "summary": "Do you ever wonder how an Android App is created from your Kotlin and Java Codes? When you hit the run button in Android Studio or execute a Gradle task like:app:assembleDebug, The following process occurs: Compilation:…",
+    "readingTimeMinutes": 5,
+    "tags": ["r8", "security", "proguard", "gradle", "android"]
+  },
+  {
+    "title": "M2 to M3 journey: Swipe Refresh",
+    "url": "https://javadjafari1.medium.com/m2-to-m3-journey-swipe-refresh-167143c21686",
+    "publishedAt": "2024-01-13T17:48:31.000Z",
+    "summary": "Hey, fellow Android devs! I’m Javad Jafari, an Android engineer with 5 years in the game. Today, I want to share a quick dive into an issue I stumbled upon — migrating Swipe Refresh in our fully Jetpack Compose app from…",
+    "readingTimeMinutes": 6,
+    "tags": ["pull-to-refresh", "android", "material3", "material-design", "jetpack-compose"]
+  }
+]
