@@ -13,6 +13,9 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-fg: var(--accent-fg);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-active: var(--accent-active);
+  --color-accent-secondary: var(--accent-secondary);
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, 'Fira Code', monospace;
@@ -32,8 +35,14 @@
   --muted: #1a1a1a;
   --muted-fg: #a8a29e;
   --border: #232323;
-  --accent: #818cf8;
+  /* Accent system derived from portrait.webp: gold wall/shirt (primary),
+     olive wall (secondary). Same hue family per theme, lightness tuned
+     for AA contrast — see design-system notes in PR/commit history. */
+  --accent: #cdb651;
   --accent-fg: #0c0c0c;
+  --accent-secondary: #bda689;
+  --accent-hover: color-mix(in srgb, var(--accent) 88%, black);
+  --accent-active: color-mix(in srgb, var(--accent) 78%, black);
 }
 
 /* ─── Light mode ─────────────────────────────────────────────────────────────── */
@@ -44,8 +53,9 @@
   --muted: #f4f4f3;
   --muted-fg: #78716c;
   --border: #e7e5e4;
-  --accent: #4f46e5;
+  --accent: #867113;
   --accent-fg: #ffffff;
+  --accent-secondary: #654f34;
 }
 
 /* ─── Base ───────────────────────────────────────────────────────────────────── */

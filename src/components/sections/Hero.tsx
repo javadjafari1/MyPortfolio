@@ -24,7 +24,16 @@ function fadeIn(delay: number) {
   }
 }
 
+// Emphasize the final word of the headline in the accent color — ties the
+// headline back to the portrait glow and primary CTA without a gradient.
+function splitLastWord(text: string) {
+  const idx = text.lastIndexOf(' ')
+  return [text.slice(0, idx + 1), text.slice(idx + 1)] as const
+}
+
 export function Hero() {
+  const [headlineLead, headlineEmphasis] = splitLastWord(personal.headline)
+
   return (
     <section aria-label="Introduction" className="relative flex min-h-dvh items-center">
       <div className="mx-auto w-full max-w-5xl px-6 pb-20 pt-32 lg:px-8">
@@ -48,7 +57,8 @@ export function Hero() {
               {...fadeUp(0.09)}
               className="mb-6 text-5xl font-semibold leading-[1.07] tracking-[-0.03em] text-foreground md:text-6xl lg:text-[64px]"
             >
-              {personal.headline}
+              {headlineLead}
+              <span className="text-accent">{headlineEmphasis}</span>
             </motion.h1>
 
             {/* Portrait — mobile only (appears after headline) */}
@@ -117,21 +127,29 @@ export function Hero() {
 
 function PortraitImage() {
   return (
-    <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-muted">
-      <Image
-        src={`${basePath}/portrait.webp`}
-        alt="Javad Jafari"
-        fill
-        priority
-        sizes="(max-width: 768px) 100vw, 380px"
-        className="object-cover object-center"
-        placeholder="empty"
-      />
-      {/* Subtle bottom gradient to blend into background */}
+    <div className="relative">
+      {/* Ambient glow echoing the portrait's own gold/olive two-tone backdrop —
+          ties the accent system back to its source image. */}
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/40 to-transparent"
         aria-hidden="true"
+        className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-accent/25 via-accent-secondary/15 to-transparent blur-3xl"
       />
+      <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-muted">
+        <Image
+          src={`${basePath}/portrait.webp`}
+          alt="Javad Jafari"
+          fill
+          priority
+          sizes="(max-width: 768px) 100vw, 380px"
+          className="object-cover object-center"
+          placeholder="empty"
+        />
+        {/* Subtle bottom gradient to blend into background */}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/40 to-transparent"
+          aria-hidden="true"
+        />
+      </div>
     </div>
   )
 }
