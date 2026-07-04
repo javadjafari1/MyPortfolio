@@ -64,23 +64,24 @@ export function Hero() {
               {personal.bio}
             </motion.p>
 
-            {/* CTAs */}
-            <motion.div {...fadeUp(0.3)} className="mb-9 flex flex-wrap items-center gap-3">
-              <Button href="#projects" size="lg">
-                View my work
-              </Button>
-              <Button href="#contact" variant="secondary" size="lg">
-                Get in touch ↗
-              </Button>
-            </motion.div>
+            {/* CTAs + current status — grouped as one decision unit */}
+            <motion.div {...fadeUp(0.3)} className="flex flex-col gap-4">
+              <div className="flex flex-wrap items-center gap-3">
+                <Button href="#projects" size="lg">
+                  View my work
+                </Button>
+                <Button href="#contact" variant="secondary" size="lg">
+                  Get in touch ↗
+                </Button>
+              </div>
 
-            {/* Availability */}
-            <motion.div {...fadeUp(0.38)} className="flex items-center gap-2.5">
-              <span className="relative flex h-2 w-2" aria-hidden="true">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-50" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-              </span>
-              <span className="text-sm text-muted-fg">{personal.availability}</span>
+              <div className="flex items-center gap-2 pl-0.5 text-sm text-muted-fg">
+                <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-40" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+                </span>
+                <span>{personal.availability}</span>
+              </div>
             </motion.div>
           </div>
 

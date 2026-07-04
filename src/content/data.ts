@@ -15,7 +15,7 @@ export const personal = {
 
   location: 'Mashhad, Iran',
   email: 'javadjafari.work@gmail.com',
-  availability: 'Open to remote opportunities',
+  availability: 'Open to remote roles',
   githubUsername: 'javadjafari1',
 } as const
 
