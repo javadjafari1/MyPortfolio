@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
 import { personal } from '@/content/data'
+import { basePath } from '@/lib/basePath'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -117,7 +118,7 @@ function PortraitImage() {
   return (
     <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-muted">
       <Image
-        src="/portrait.webp"
+        src={`${basePath}/portrait.webp`}
         alt="Javad Jafari"
         fill
         priority
