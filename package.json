@@ -14,6 +14,7 @@
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "type-check": "tsc --noEmit",
+    "fetch:medium": "node scripts/fetch-medium.mjs",
     "prepare": "husky"
   },
   "lint-staged": {

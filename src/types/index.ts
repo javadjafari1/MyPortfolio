@@ -1,5 +1,13 @@
 export type Theme = 'light' | 'dark' | 'system'
 
+export interface GalleryImage {
+  thumb: string
+  full: string
+  width: number
+  height: number
+  alt: string
+}
+
 export interface Project {
   slug: string
   title: string
@@ -17,6 +25,16 @@ export interface Project {
   year: number
   context: 'professional' | 'personal'
   scale?: string
+  gallery?: GalleryImage[]
+}
+
+export interface Article {
+  title: string
+  url: string
+  publishedAt: string
+  summary: string
+  readingTimeMinutes: number
+  tags: string[]
 }
 
 export interface Experience {
